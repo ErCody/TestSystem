@@ -2,12 +2,14 @@
 #include <string>
 
 //Folder with user data
-#define USER_PATH "./files/userData"
+#define USER_PATH "./files/userData/"
 
 namespace FileSystem {
 	bool isExist(const std::string& path);
 
 	void createBaseDirectory();
+
+	void createUserDirectory(const std::string& userLogin);
 }
 
 
