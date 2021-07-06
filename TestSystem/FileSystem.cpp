@@ -5,7 +5,6 @@
 #include <fstream>
 
 
-//fr
 namespace FileSystem {
 	bool isExist(const std::string& path) {
 		std::ifstream fileCheck;
