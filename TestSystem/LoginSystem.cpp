@@ -5,6 +5,7 @@
 #include <iostream>
 
 #include <string>
+#include <functional>
 
 
 //Локальная функция для проверки, существует ли такой пользователь или нет
@@ -52,6 +53,7 @@ void passwordEncryption(std::string& userPassword) {
 		userPassword[i] = userPassword[i] - i;
 	}
 }
+
 //Локальная функция для дешифровки пароля
 void passwordDecryption(std::string& userPassword) {
 	for (size_t i = 0; i < userPassword.size() - 4; i++) {
@@ -62,26 +64,52 @@ void passwordDecryption(std::string& userPassword) {
 	}
 }
 
-bool userLogin(const std::string& userLogin, std::string& userPassword) {
-	if (FileSystem::isExist(userLogin)) {
-		/*
-		*  Code
-		*/
+//Локальная функция для проверки совпадения пароля
+bool passwordMatch(const std::string& userLogin, std::string& userPassword) {
+	std::string path = USER_PATH + userLogin + '/' + userLogin + ".txt";
+	std::string password = FileSystem::getFileData(path, PASSWORD);
+	passwordDecryption(password);
+	if (password == userPassword) {
 		return true;
 	}
-	return true;
+
+
+	return false;
+}
+
+bool userLogin(const std::string& userLogin, std::string& userPassword) {
+	if (isUserExist(userLogin) && passwordMatch(userLogin, userPassword)) {
+		return true;
+	}
+	return false;
 }
 
 bool userReg(const std::string& userLogin, std::string& userPassword) {
 	if (isUserExist(userLogin) || !passwordCheck(userPassword)) {
 		return false;
 	}
-	std::string path = USER_PATH + userLogin + ".txt";
-	std::ofstream newUser;
-
+	FileSystem::createDirectory(USER_PATH + userLogin);
+	std::string path = USER_PATH + userLogin + '/' + userLogin + ".txt";
 	passwordEncryption(userPassword);
+	FileSystem::createFile_w(path, userPassword);
+	return true;
+}
 
-	newUser.open(path);
-	newUser.write(reinterpret_cast<const char*>(userPassword.c_str()), userPassword.size());
+bool isAdminExist() {
+	std::string path = ADMIN_PATH + "admin.txt";
+	if (FileSystem::isExist(path)) {
+		return true;
+	}
+	return false;
+}
+
+bool adminReg(std::string& adminPassword) {
+	if (!passwordCheck(adminPassword)) {
+		return false;
+	}
+
+	std::string path = ADMIN_PATH + "admin.txt";
+	passwordEncryption(adminPassword);
+	FileSystem::createFile_w(path, adminPassword);
 	return true;
 }
