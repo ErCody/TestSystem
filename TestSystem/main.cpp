@@ -1,9 +1,25 @@
-#include <iostream>
-#include "FileSystem.h"
-#include "LoginSystem.h"
+#include <iostream> 
+#include <string> 
+#include "ConsoleUI.h"
+
+class Application {
+	std::string login, password;
+public:
+	void run() {
+		ConsoleUI UI(login, password);
+		User activeUser;
+		if (!LoginSystem::isAdminExist()) {
+			UI.adminRegUI();
+		}
+		UI.welcomeScreen();
+		UI.mainScreen();
+		if (activeUser.isAdmin) {
+			
+		}
+	}
+
+};
+
 int main() {
-	//FileSystem::createBaseDirectory();
-	std::string l = "LoginName", p = "Password1";
-    std::cout << userReg(l,p);
 
 }
