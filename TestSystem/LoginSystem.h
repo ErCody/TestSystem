@@ -1,7 +1,8 @@
 #pragma once
 #include <string>
+#include "User.h"
 namespace LoginSystem {
-	bool userLogin(const std::string& userLogin, std::string& userPassword);
+	bool userLogin(const std::string& userLogin, std::string& userPassword, User& user);
 
 	bool userReg(const std::string& userLogin, std::string& userPassword);
 

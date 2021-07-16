@@ -8,6 +8,7 @@
 #include <string>
 
 
+
 namespace LoginSystem {
 
 	//Локальная функция для проверки, существует ли такой пользователь или нет
@@ -78,7 +79,21 @@ namespace LoginSystem {
 		return false;
 	}
 
-	bool userLogin(const std::string& userLogin, std::string& userPassword) {
+	bool isAdmin(const std::string& userLogin, std::string userPassword) {
+		std::string path = ADMIN_PATH  + "admin.txt";
+		std::string password = FileSystem::getFileData(path, PASSWORD);
+		passwordDecryption(password);
+		if (userLogin == "admin" && userPassword == password) {
+			return true;
+		}
+		return false;
+	}
+
+	bool userLogin(const std::string& userLogin, std::string& userPassword, User& user) {
+		if (isAdmin(userLogin, userPassword)) {
+			user.setAdmin(true);
+			return true;
+		}
 		if (isUserExist(userLogin) && passwordMatch(userLogin, userPassword)) {
 			return true;
 		}
@@ -93,6 +108,7 @@ namespace LoginSystem {
 		std::string path = USER_PATH + userLogin + '/' + userLogin + ".txt";
 		passwordEncryption(userPassword);
 		FileSystem::createFile_w(path, userPassword);
+		FileSystem::writeDataEnd(USER_FILE_PATH, userLogin);
 		return true;
 	}
 

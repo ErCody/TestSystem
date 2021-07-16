@@ -2,8 +2,10 @@
 
 #include "User.h"
 #include "LoginSystem.h"
+#include "TestSystem.h"
 
 #include <iostream>
+#include <sstream>
 #include <fstream>
 
 #include <Windows.h>
@@ -17,18 +19,22 @@ private:
 
 	void showMessage(const std::string& message);
 
-	void userRegUI();
+	void userRegUI(User& user);
 
-	void userLogUI();
+	void userLogUI(User& user);
 
 public:
-	ConsoleUI(std::string login, std::string pasword);
-	void welcomeScreen();
+	ConsoleUI(std::string& login, std::string& pasword);
+	void welcomeScreen(User& user);
 
-	void adminRegUI();
+	void adminRegUI(User& user);
 
-	void mainScreen();
+	void mainScreen(TestHandler& test);
 
-	void adminPanel();
+	void adminPanel(User& user);
+
+	void usersPanel(User& user);
+
+	void testScreen(TestHandler& test);
 };
 
