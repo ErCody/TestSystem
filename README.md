@@ -1,10 +1,14 @@
 # TestSystem
-Система тестирования. Для того чтобы начать тестирование пользователь(дальше юзер) должен зарегистрироваться в системе и заполнить данные о себе. Также в системе должен быть один администратор(далее админ). Далее будут описаны все возможности юзера и админа.
+The project uses the jsoncpp library.
 
- ### Юзер имеет право:
-* Один раз заполнить о себе информацию(ФИО, номер телефона, электронная почта, номер паспорта).
-* Проходить все доступные тесты. 
-* Также юзер имеет право приостановить тест и продолжить его позже.
-* Просматривать свою статистику.
+**WARNING: you must use the C ++ 17 standard and x86 platform.**
 
-### Админ имеет право:
+## Jsoncpp installation process.
+
+1.Download [vcpkg](https://vcpkg.io/en/getting-started.html)
+
+2.Download [jsoncpp](https://github.com/open-source-parsers/jsoncpp)
+
+https://www.youtube.com/watch?v=wRnjahwxZ8A&t=1s
+
+
