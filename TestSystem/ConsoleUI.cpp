@@ -10,7 +10,7 @@ void ConsoleUI::showMessage(const std::string& message) {
 }
 
 void ConsoleUI::userRegUI(User& user) {
-	Sleep(500);
+	//Sleep(500);
 	system("cls");
 	while (true) {
 		showMessage("Tip: Login must be unique. Password must be at least 5 characters,"
@@ -68,7 +68,7 @@ void ConsoleUI::welcomeScreen(User& user) {
 
 void ConsoleUI::adminRegUI(User& user) {
 	std::cout << "There is no admin in system." << std::endl;
-	Sleep(1500);
+	//Sleep(1500);
 	system("cls");
 	while (true) {
 		showMessage("Tip: Password must be at least 5 characters,"
@@ -81,7 +81,7 @@ void ConsoleUI::adminRegUI(User& user) {
 			continue;
 		}
 		std::cout << "The application will be restarted to add an admin." << std::endl;
-		Sleep(3000);
+		//Sleep(3000);
 		system("cls");
 		break;
 	}
@@ -222,11 +222,11 @@ void ConsoleUI::testScreen(TestHandler& test) {
 		else {
 			std::cout << "Your Answer is wrong." << std::endl;
 		}
-		Sleep(1500);
+		//Sleep(1500);
 		
 	}
 	double grade = (rightAnswer * 12) / 4;
 	std::cout << "Your grade: " << grade << std::endl;
-	Sleep(1500);
+	//Sleep(1500);
 	system("cls");
 }

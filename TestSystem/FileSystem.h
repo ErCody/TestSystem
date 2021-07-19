@@ -4,6 +4,8 @@
 #include <filesystem>
 #include <map>
 
+#define a 5
+
 //Folder with user data
 const std::string USER_PATH = "./files/userData/";
 const std::string ADMIN_PATH = "./files/userData/adminData/";

@@ -3,7 +3,6 @@
 #include "User.h"
 
 #include <fstream>
-#include <iostream>
 
 #include <string>
 

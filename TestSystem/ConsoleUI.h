@@ -8,7 +8,7 @@
 #include <sstream>
 #include <fstream>
 
-#include <Windows.h>
+//#include <windows.h>
 #include <time.h>
 #include <conio.h>
 

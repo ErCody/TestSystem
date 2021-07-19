@@ -10,7 +10,7 @@ class Application {
 	std::string login, password;
 public:
 	void run() {
-
+		int aq = 5;
 		ConsoleUI UI(login, password);
 		User activeUser;
 		TestHandler testHandler;
